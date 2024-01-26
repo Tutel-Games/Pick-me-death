@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3296875139391582352}
   - component: {fileID: 2561295859330024966}
   - component: {fileID: 8048591866519468393}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4280243255263173000
 MonoBehaviour:
@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ef0eace9cbd674ca2dea86f482e4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveRight: 0
   _movementSpeed: 3
   _isDead: 0
-  _moveRight: 1
 --- !u!212 &2694658411654043194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 80
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!61 &2561295859330024966
 BoxCollider2D:
   m_ObjectHideFlags: 0
