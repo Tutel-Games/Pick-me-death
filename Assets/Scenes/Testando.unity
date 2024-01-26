@@ -474,8 +474,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.7176471, g: 0.8980392, b: 0.7058824, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9e64f49dcaaf1e84ab033a8325fbdf98, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -493,7 +493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899202118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.44, z: 0}
+  m_LocalPosition: {x: 0, y: -3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -533,6 +533,9 @@ MonoBehaviour:
   _rightAttackSphere: {fileID: 1715461374}
   _inputs: {fileID: 899202121}
   _sr: {fileID: 899202119}
+  _idleSprite: {fileID: 21300000, guid: 9e64f49dcaaf1e84ab033a8325fbdf98, type: 3}
+  _normalAttack1: {fileID: 21300000, guid: 1561c37ab246a8b41a4e26fcb904b363, type: 3}
+  _normalAttack2: {fileID: 21300000, guid: 1561c37ab246a8b41a4e26fcb904b363, type: 3}
 --- !u!1 &1064037126
 GameObject:
   m_ObjectHideFlags: 0
