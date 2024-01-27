@@ -7,7 +7,7 @@ public class InputReader : MonoBehaviour
     public bool D;
     void Update()
     {
-        W =  Input.GetKeyDown(KeyCode.W);
+        W = Input.GetKeyDown(KeyCode.W);
         A = Input.GetKeyDown(KeyCode.A);
         D = Input.GetKeyDown(KeyCode.D);
     }

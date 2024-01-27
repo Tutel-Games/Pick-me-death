@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 3a02b86085774734db9244d162db835e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Valentime
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8d41cd68b55136b42a541e23f3165bf9, type: 3}
+  - {fileID: 12800000, guid: 500013c81da2d8b418abef57d1fb34ab, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
