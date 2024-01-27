@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _health = 2;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private bool _isDead;
+    [SerializeField] private ParticleSystem _particleSystem;
     private Animator _animator;
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
@@ -45,6 +46,7 @@ public class Enemy : MonoBehaviour
     public void GetDamage()
     {
         _health--;
+        //_particleSystem.Play();
         if (_health <= 0)
         {
             _isDead = true;
