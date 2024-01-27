@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     public void GetDamage()
     {
         _health--;
-        //_particleSystem.Play();
+        _particleSystem.Play();
         if (_health <= 0)
         {
             _isDead = true;
