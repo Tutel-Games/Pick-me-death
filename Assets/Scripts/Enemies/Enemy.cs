@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public event Action Death;
+    public event Action<Enemy> Death;
     public bool MoveRight;
+    [SerializeField] private int _health;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private bool _isDead;
     private Animator _animator;
@@ -25,19 +26,15 @@ public class Enemy : MonoBehaviour
         _rb.MovePosition(move);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("StopPosition"))
-        {
-            //TODO: CHANGE THIS TO ANIMATION ETC
-            Destroy(gameObject);
-        }
-    }
-
     public void GetDamage()
     {
-        _isDead = true;
-        //TODO: ADD REST OF STUFF
-        Death?.Invoke();
+        _health--;
+        if (_health <= 0)
+        {
+            _isDead = true;
+            GameManager.IncreasePoints(ComboCounter.Instance.ScoreMultiplier);
+            Death?.Invoke(this);
+            Destroy(gameObject);
+        }
     }
 }

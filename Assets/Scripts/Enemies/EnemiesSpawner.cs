@@ -2,7 +2,7 @@ using UnityEngine;
 public class EnemiesSpawner : MonoBehaviour
 {
     [field: SerializeField] public float SpawnTimeInterval { get; private set; }
-    public int ActiveEnemiesCount { get; private set; }
+    [field: SerializeField] public int ActiveEnemiesCount { get; private set; }
     [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private SpawnPositionData[] _spawnPositions;
     private int _lastDrawnPositionIndex;
@@ -40,8 +40,9 @@ public class EnemiesSpawner : MonoBehaviour
         newEnemy.MoveRight = drawnPosition.MoveRight;
     }
 
-    private void On_Death()
+    private void On_Death(Enemy enemy)
     {
         ActiveEnemiesCount--;
+        enemy.Death -= On_Death;
     }
 }
