@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer _sr;
     [SerializeField] private Animator _anim;
     [SerializeField] private float _jumpForce = 1f;
-    
+    [SerializeField] private ParticleSystem _particlesJump;
     private GameObject _currentActiveObj;
     private float _timer;
     private Random _random = new ();
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
             _anim.Play("Jump");
+            _particlesJump.Play();
         }
 
         if (_timer > 0)
