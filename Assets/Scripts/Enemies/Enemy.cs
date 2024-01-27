@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     [SerializeField] private bool _isDead;
     [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private ParticleSystem _particleSystem2;
     [SerializeField] private WordRandomizer _randomizer;
     [SerializeField] private HitSoundRandomizer _soundRandomizer;
     private Animator _animator;
@@ -48,8 +49,17 @@ public class Enemy : MonoBehaviour
     public void GetDamage()
     {
         _health--;
-        _particleSystem.Play();
-        _randomizer.PlayParticle();
+        if (MoveRight)
+        {
+            _particleSystem2.Play();
+            _randomizer.PlayParticle2();
+        }
+        else
+        {
+            _particleSystem.Play();
+            _randomizer.PlayParticle();
+
+        }
         _soundRandomizer.PlaySound();
         if (_health <= 0)
         {
