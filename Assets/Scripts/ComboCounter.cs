@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 
 public class ComboCounter : MonoBehaviour
