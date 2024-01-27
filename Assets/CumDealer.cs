@@ -9,8 +9,7 @@ public class CumDealer : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            print("DŻAKI CZAN SPIZGANE OCZY MAM");
-            //other.TryGetComponent<Enemy>().GetDamage();
+            other.GetComponent<Enemy>().GetDamage();
         }
     }
 }

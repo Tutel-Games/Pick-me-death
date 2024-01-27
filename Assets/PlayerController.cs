@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite _idleSprite;
     [SerializeField] private Sprite _normalAttack1;
     [SerializeField] private Sprite _normalAttack2;
+    [SerializeField] private Sprite _jumpSprite;
     [SerializeField] private float _jumpForce = 1f;
     
     private GameObject _currentActiveObj;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         if (_inputs.W && _isGrounded)
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
+            _sr.sprite = _jumpSprite;
         }
 
         if (_timer > 0)
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             _currentActiveObj.SetActive(false);
-            _sr.sprite = _idleSprite;
+            _sr.sprite = _isGrounded ? _idleSprite : _jumpSprite;
         }
     }
 
