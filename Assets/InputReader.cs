@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class InputReader : MonoBehaviour
 {
-    public bool IsJumping;
+    public bool W;
     public bool A;
     public bool D;
     void Update()
     {
-        IsJumping =  Input.GetKeyDown(KeyCode.Space);
+        W =  Input.GetKeyDown(KeyCode.W);
         A = Input.GetKeyDown(KeyCode.A);
         D = Input.GetKeyDown(KeyCode.D);
     }
