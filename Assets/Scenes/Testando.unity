@@ -960,6 +960,7 @@ MonoBehaviour:
   _rightAttackSphere: {fileID: 1715461374}
   _inputs: {fileID: 899202121}
   _sr: {fileID: 1351911884}
+  _anim: {fileID: 1351911885}
   _idleSprite: {fileID: 21300000, guid: 9e64f49dcaaf1e84ab033a8325fbdf98, type: 3}
   _normalAttack1: {fileID: 21300000, guid: 1561c37ab246a8b41a4e26fcb904b363, type: 3}
   _normalAttack2: {fileID: 21300000, guid: 4a743b99adca59f47960dc23f4c75a2b, type: 3}
@@ -1595,6 +1596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351911883}
   - component: {fileID: 1351911884}
+  - component: {fileID: 1351911885}
   m_Layer: 0
   m_Name: 9-Sliced
   m_TagString: Untagged
@@ -1669,6 +1671,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1351911885
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351911882}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 439f5a12d98adc44a83dc062ab7c64a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1371034252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,7 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c219504f1a96ae4d857ede5e96c8298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 10, y: 2}
+  Position: {x: 10, y: 0.69}
   MoveRight: 0
 --- !u!4 &1429990394
 Transform:
@@ -1828,7 +1851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c219504f1a96ae4d857ede5e96c8298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: -9.6, y: 2}
+  Position: {x: -9.6, y: 0.69}
   MoveRight: 1
 --- !u!4 &1694717443
 Transform:

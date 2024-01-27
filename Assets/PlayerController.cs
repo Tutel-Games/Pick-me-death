@@ -10,14 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _rightAttackSphere;
     [SerializeField] private InputReader _inputs;
     [SerializeField] private SpriteRenderer _sr;
-    [SerializeField] private Sprite _idleSprite;
-    [SerializeField] private Sprite _normalAttack1;
-    [SerializeField] private Sprite _normalAttack2;
-    [SerializeField] private Sprite _jumpSprite;
+    [SerializeField] private Animator _anim;
     [SerializeField] private float _jumpForce = 1f;
     
     private GameObject _currentActiveObj;
-    private List<Sprite> _normalAttacks = new();
     private float _timer;
     private Random _random = new ();
     private bool _isGrounded;
@@ -27,8 +23,6 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _currentActiveObj = _leftAttackSphere;
-        _normalAttacks.Add(_normalAttack1);
-        _normalAttacks.Add(_normalAttack2);
     }
 
     void Update()
@@ -49,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (_inputs.W && _isGrounded)
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
-            _sr.sprite = _jumpSprite;
+            _anim.Play("Jump");
         }
 
         if (_timer > 0)
@@ -59,7 +53,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             _currentActiveObj.SetActive(false);
-            _sr.sprite = _isGrounded ? _idleSprite : _jumpSprite;
+            if (_isGrounded)
+            {
+                _anim.Play("Idle");
+            }
+            else
+            {
+                _anim.Play("Jump");
+            }
         }
     }
 
@@ -69,7 +70,16 @@ public class PlayerController : MonoBehaviour
         _currentActiveObj.SetActive(false);
         _currentActiveObj = newObj;
         _currentActiveObj.SetActive(true);
-        _sr.sprite = _random.Next(2) == 0 ? _normalAttack1 : _normalAttack2;
+        if (_random.Next(2) == 0)
+        {
+            _anim.Play("Punch");
+        }
+        else
+        {
+            _anim.Play("Kick");
+        }
     }
-    
+
+
+
 }
