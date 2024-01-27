@@ -9,6 +9,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Testando");
     }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+    
 
 public void QuitGame()
 {
