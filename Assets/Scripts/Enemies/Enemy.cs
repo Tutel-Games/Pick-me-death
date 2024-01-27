@@ -51,13 +51,15 @@ public class Enemy : MonoBehaviour
         _health--;
         if (MoveRight)
         {
-            _particleSystem.Play();
+            _particleSystem2.Play();
+            _randomizer.PlayParticle2();
         }
         else
         {
-            _particleSystem2.Play();
+            _particleSystem.Play();
+            _randomizer.PlayParticle();
+
         }
-        _randomizer.PlayParticle();
         _soundRandomizer.PlaySound();
         if (_health <= 0)
         {
