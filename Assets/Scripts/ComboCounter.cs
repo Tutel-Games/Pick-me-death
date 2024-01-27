@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -9,9 +10,11 @@ public class ComboCounter : MonoBehaviour
     public float StreakLength;
     public int CurrentStreak = 0;
     public int ScoreMultiplier = 1;
+    public event Action StreakReset; 
     public List<int> MultiplierThresholds = new();
     [SerializeField] private TMP_Text _comboText;
     [SerializeField] private float _timer;
+    [SerializeField] private MusicBlender _musicBlender;
     private int _currentThresholdIndex;
     private void Awake()
     {
@@ -43,6 +46,7 @@ public class ComboCounter : MonoBehaviour
     {
         ResetCounter();
         CurrentStreak++;
+        _musicBlender.MusicBlenderPoints(CurrentStreak);
         if (_currentThresholdIndex != MultiplierThresholds.Count && CurrentStreak >= MultiplierThresholds[_currentThresholdIndex])
         {
             ScoreMultiplier++;
@@ -78,5 +82,6 @@ public class ComboCounter : MonoBehaviour
         if (!_comboText) return;
         
         _comboText.text = $"COMBO {CurrentStreak} \n x{ScoreMultiplier}";
+        StreakReset?.Invoke();
     }
 }

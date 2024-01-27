@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
     public void GetDamage()
     {
         _health--;
+        ComboCounter.Instance.IncreaseStreak();
         if (MoveRight)
         {
             _particleSystem2.Play();
@@ -64,7 +65,7 @@ public class Enemy : MonoBehaviour
         if (_health <= 0)
         {
             _isDead = true;
-            //GameManager.IncreasePoints(ComboCounter.Instance.ScoreMultiplier);
+            GameManager.IncreasePoints(ComboCounter.Instance.ScoreMultiplier);
             Death?.Invoke(this);
             Destroy(gameObject);
         }
