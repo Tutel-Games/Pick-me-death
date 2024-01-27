@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
         if (_health <= 0)
         {
             _isDead = true;
-            GameManager.IncreasePoints(ComboCounter.Instance.ScoreMultiplier);
+            //GameManager.IncreasePoints(ComboCounter.Instance.ScoreMultiplier);
             Death?.Invoke(this);
             Destroy(gameObject);
         }
