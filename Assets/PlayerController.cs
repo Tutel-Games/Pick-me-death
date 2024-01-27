@@ -17,10 +17,16 @@ public class PlayerController : MonoBehaviour
     private float _timer;
     private Random _random = new ();
     private bool _isGrounded;
+    private bool _isSmashing;
     private Rigidbody2D _rb;
     public LayerMask GroundLayer;
+
+    private PhysicsMaterial2D bounce, nobounce;
     private void Start()
     {
+        bounce = new PhysicsMaterial2D();
+        bounce.bounciness = 0.5f;
+        nobounce = new PhysicsMaterial2D();
         _rb = GetComponent<Rigidbody2D>();
         _currentActiveObj = _leftAttackSphere;
     }
@@ -39,11 +45,18 @@ public class PlayerController : MonoBehaviour
             _sr.flipX = false;
             SetActiveObj(_rightAttackSphere);
         }
-
         if (_inputs.W && _isGrounded)
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
             _anim.Play("Jump");
+        }
+        
+        if (_inputs.S && !_isGrounded && !_isSmashing)
+        {
+            _rb.AddForce(Vector3.down * (_jumpForce * 1.25f), ForceMode2D.Impulse);
+            _rb.sharedMaterial = bounce;
+            _isSmashing = true;
+            _anim.Play("Smash");
         }
 
         if (_timer > 0)
@@ -53,17 +66,27 @@ public class PlayerController : MonoBehaviour
         else
         {
             _currentActiveObj.SetActive(false);
-            if (_isGrounded)
+            if (_isGrounded && !_isSmashing)
             {
                 _anim.Play("Idle");
             }
-            else
+            else if(!_isSmashing)
             {
                 _anim.Play("Jump");
             }
         }
+
+        if (_isGrounded && _isSmashing)
+        {
+            Invoke(nameof(ResetSmash), .2f);
+        }
     }
 
+    private void ResetSmash()
+    {
+        _rb.sharedMaterial = nobounce;
+        _isSmashing = false;
+    }
     void SetActiveObj(GameObject newObj)
     {
         _timer = 0.2f;
