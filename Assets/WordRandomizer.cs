@@ -6,10 +6,7 @@ public class WordRandomizer : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] _particleSystems;
     private int _random;
-    void Start()
-    {
 
-    }
     [ContextMenu("playparticle")]
     public void PlayParticle()
     {
@@ -17,9 +14,5 @@ public class WordRandomizer : MonoBehaviour
         var s = _particleSystems[_random];
         s.gameObject.SetActive(true);
         s.Play();
-    }
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

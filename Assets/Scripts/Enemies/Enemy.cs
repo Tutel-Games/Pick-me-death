@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool _isDead;
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private WordRandomizer _randomizer;
+    [SerializeField] private HitSoundRandomizer _soundRandomizer;
     private Animator _animator;
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour
         _health--;
         _particleSystem.Play();
         _randomizer.PlayParticle();
+        _soundRandomizer.PlaySound();
         if (_health <= 0)
         {
             _isDead = true;
