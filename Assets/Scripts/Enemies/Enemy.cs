@@ -9,10 +9,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     [SerializeField] private bool _isDead;
     [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private WordRandomizer _randomizer;
     private Animator _animator;
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
-
+    
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour
     {
         _health--;
         _particleSystem.Play();
+        _randomizer.PlayParticle();
         if (_health <= 0)
         {
             _isDead = true;
