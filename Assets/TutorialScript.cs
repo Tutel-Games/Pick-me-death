@@ -11,7 +11,7 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] private int _health = 2;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private bool _isDead;
-    [SerializeField] private ParticleSystem _particleSystem2;
+    [SerializeField] private ParticleSystem[] _particleSystem;
     [SerializeField] private InputReader _inputs;
     [SerializeField] private GameObject _gameObjectA;
     [SerializeField] private GameObject _gameObjectD;
@@ -22,7 +22,7 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] private GameObject _gameObjectWS2;
     [SerializeField] private GameObject _Gra;
     [SerializeField] private PlayerController Player;
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
     private int counter = 0;
     private GameObject _currentActiveObj;
     private float _timer;
@@ -41,43 +41,65 @@ public class TutorialScript : MonoBehaviour
         }
         if (_inputs.A && Player._isGrounded)
         {
-            _gameObjectA.SetActive(false);
+            _audioSource.Play();
+            _particleSystem[0].Play();
+            StartCoroutine(Pop(_gameObjectA));
+
             counter++;
         }
         if (_inputs.D && Player._isGrounded)
         {
-            _gameObjectD.SetActive(false);
+            _audioSource.Play();
+            _particleSystem[1].Play();
+            StartCoroutine(Pop(_gameObjectD));
+
             counter++;
         }
         if (_inputs.A && !Player._isGrounded)
         {
-            _gameObjectWA.SetActive(false);
+            _audioSource.Play();
+            _particleSystem[3].Play();
+            StartCoroutine(Pop(_gameObjectWA));
+
             counter++;
         }
         if (_inputs.D && !Player._isGrounded)
         {
-            _gameObjectWD.SetActive(false);
+            _audioSource.Play();
+            _particleSystem[4].Play();
+            StartCoroutine(Pop(_gameObjectWD));
+
             counter++;
         }
         if (_inputs.W && !Player._isGrounded)
         {
-            _gameObjectWW.SetActive(false);
+            _audioSource.Play();
+            _particleSystem[2].Play();
+            StartCoroutine(Pop(_gameObjectWW));
             counter++;
         }
         if (_inputs.W)
         {
             if (_canDouble)
             {
-                _gameObjectWW.SetActive(false);
+                StartCoroutine(Pop(_gameObjectWW));
                 counter++;
             }
         }
 
         if (_inputs.S && !Player._isGrounded && !_isSmashing)
         {
-            _gameObjectWS.SetActive(false);
-            _gameObjectWS2.SetActive(false);
+            _audioSource.Play();
+            _particleSystem[5].Play();
+            _particleSystem[6].Play();
+            StartCoroutine(Pop(_gameObjectWS));
+            StartCoroutine(Pop(_gameObjectWS2));
             counter++;
         }
+    }
+    IEnumerator Pop(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
     }
 }
