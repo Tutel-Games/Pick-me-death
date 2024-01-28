@@ -34,7 +34,7 @@ public class ComboCounter : MonoBehaviour
     {
         CurrentStreak++;
         _musicBlender.MusicBlenderPoints(CurrentStreak);
-        if (CurrentStreak is 25 or 50 or 75 or 100 or 125 or 150 or 175 or 200 or 225 or 250 or 275 or 300 or 325 or 350 or 375 or 400 or 425 or 450 or 475 or 500 or 525 or 550 or 575 or 600 or 625 or 650 or 675 or 700)
+        if (CurrentStreak is 10 or 25 or 50 or 75 or 100 or 125 or 150 or 175 or 200 or 225 or 250 or 275 or 300 or 325 or 350 or 375 or 400 or 425 or 450 or 475 or 500 or 525 or 550 or 575 or 600 or 625 or 650 or 675 or 700)
         {
             _pc.Rage();
         }
