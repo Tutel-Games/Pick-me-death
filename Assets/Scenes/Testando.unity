@@ -2267,7 +2267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SpawnTimeInterval>k__BackingField: 3
   <ActiveEnemiesCount>k__BackingField: 0
-  _enemyPrefab: {fileID: 4280243255263173000, guid: afbedc1be4847004bad5c84625ea7acb, type: 3}
+  _enemyPrefab:
+  - {fileID: 4280243255263173000, guid: afbedc1be4847004bad5c84625ea7acb, type: 3}
   _spawnPositions:
   - {fileID: 1694717442}
   - {fileID: 1429990393}
@@ -4022,7 +4023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SpawnTimeInterval>k__BackingField: 2
   <ActiveEnemiesCount>k__BackingField: 0
-  _enemyPrefab: {fileID: 4280243255263173000, guid: 859ef711e07c1a54cb6576ab05b82929, type: 3}
+  _enemyPrefab:
+  - {fileID: 4280243255263173000, guid: 859ef711e07c1a54cb6576ab05b82929, type: 3}
+  - {fileID: 4280243255263173000, guid: 92a6756c1f4381243ae60894e77b26fb, type: 3}
   _spawnPositions:
   - {fileID: 1317538440}
   - {fileID: 790807146}
