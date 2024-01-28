@@ -42,12 +42,12 @@ public class PlayerController : MonoBehaviour
     {
         _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, GroundLayer);
         
-        if (_inputs.A)
+        if (_inputs.A && _timer <=0)
         {
             _sr.flipX = true;
             SetActiveObj(_leftAttackSphere);
         }
-        if (_inputs.D)
+        if (_inputs.D && _timer <=0)
         {
             _sr.flipX = false;
             SetActiveObj(_rightAttackSphere);
