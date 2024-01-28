@@ -121,24 +121,31 @@ public class PlayerController : MonoBehaviour
         _rb.sharedMaterial = nobounce;
         _isSmashing = false;
     }
+
+    private int animIndex;
     void SetActiveObj(GameObject newObj)
     {
         _timer = 0.2f;
         _currentActiveObj.SetActive(false);
         _currentActiveObj = newObj;
         _currentActiveObj.SetActive(true);
-        if (_random.Next(2) == 0)
+        if (animIndex == 0)
         {
             _anim.Play("Punch");
+            animIndex++;
+        }
+        else if (animIndex == 1)
+        {
+            _anim.Play("Kick");
+            animIndex++;
         }
         else
         {
-            _anim.Play("Kick");
+            _anim.Play("Push");
+            animIndex = 0;
         }
     }
-
-
-    [ContextMenu("Test")]
+    
     public void GetDamage()
     {
         int damage = 100;
@@ -152,7 +159,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [ContextMenu("XXXXX")]
     public void Rage()
     {
         _isRaged = true;
