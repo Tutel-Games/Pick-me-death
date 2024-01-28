@@ -19281,6 +19281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveRight: 0
+  IsShrek: 1
   _enemyAttack: {fileID: 1141260279410473246}
   _spriteRenderer: {fileID: 4099723632347224658}
   _animator: {fileID: 2020429382766971441}

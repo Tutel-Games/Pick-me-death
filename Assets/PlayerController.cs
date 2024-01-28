@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ParticleSystem _particlesSmash;
     [SerializeField] private ParticleSystem _particlesRage;
     [SerializeField] private AudioSource _audioRage;
+    [SerializeField] private AudioSource _audioSmash;
     private GameObject _currentActiveObj;
     private float _timer;
     private Random _random = new ();
@@ -82,6 +83,7 @@ public class PlayerController : MonoBehaviour
                 _rb.AddForce(Vector3.down * (_jumpForce * 1.25f), ForceMode2D.Impulse);
                 _rb.sharedMaterial = bounce;
                 _isSmashing = true;
+                _audioSmash.Play();
                 _anim.Play("Smash");
             }
         }

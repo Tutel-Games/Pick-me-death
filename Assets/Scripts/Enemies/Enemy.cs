@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 {
     public event Action<Enemy> Death;
     public bool MoveRight;
+    public bool IsShrek = false;
     [SerializeField] private EnemyAttack _enemyAttack;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animator _animator;
@@ -105,10 +106,10 @@ public class Enemy : MonoBehaviour
     private IEnumerator PushBack(float multiplier)
     {
         if (_hasReachedStopPosition) yield return null;
-
+        float multiplier2 = IsShrek ? .6f : 1;
         _isKnockedBack = true;
         float pushForceX = MoveRight ? -1 : 1;
-        _rb.AddForce(new Vector2(pushForceX * 25 * multiplier, 0), ForceMode2D.Impulse);
+        _rb.AddForce(new Vector2(pushForceX * 25 * multiplier * multiplier2, 0), ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.5f);
         _isKnockedBack = false;
     }
