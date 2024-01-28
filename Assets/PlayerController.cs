@@ -147,10 +147,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void GetDamage()
+    public void GetDamage(int value)
     {
-        int damage = 100;
-        Hp -= damage;
+        Hp -= value;
         float magicNumber = 584.391f;
         _hpSlider.sizeDelta = new Vector2(magicNumber * (Hp/100f), _hpSlider.sizeDelta.y);
         if (Hp <= 0)

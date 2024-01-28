@@ -8,12 +8,12 @@ public class Enemy : MonoBehaviour
 {
     public event Action<Enemy> Death;
     public bool MoveRight;
+    [SerializeField] private EnemyAttack _enemyAttack;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animator _animator;
     [SerializeField] private int _health = 2;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private bool _isDead;
-    [SerializeField] private float _attackDelay;
     [Header("AFTER DEATH RAGDOLL")] 
     [SerializeField] private int _rageThreshold;
     [SerializeField] private float _defaultPunchPower;
@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour
     private bool _isKnockedBack;
     private bool _hasReachedStopPosition;
     private Rigidbody2D _rb;
-    private float _timer;
     private PlayerController _playerController;
     
     private void Awake()
@@ -54,31 +53,14 @@ public class Enemy : MonoBehaviour
         _rb.MovePosition(move);
     }
 
-    private void Update()
-    {
-        if (!_hasReachedStopPosition) return;
-        if (_isKnockedBack) return;
-
-        _timer -= Time.deltaTime;
-        if (_timer <= 0)
-        {
-            _playerController.GetDamage();
-            _timer = _attackDelay;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("StopPosition"))
         {
             _hasReachedStopPosition = true;
             _ms = 0;
-            _timer = _attackDelay;
             _animator.Play(MoveRight ? "AttackRight" : "Attack");
-            if (!_playerController)
-            {
-                _playerController = other.GetComponent<PlayerHolder>().PlayerController;
-            }
+            _enemyAttack.PlayerController = other.GetComponent<PlayerHolder>().PlayerController;
         }
     }
 
