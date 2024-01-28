@@ -21,6 +21,7 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] private GameObject _gameObjectWS;
     [SerializeField] private GameObject _gameObjectWS2;
     [SerializeField] private GameObject _Gra;
+    [SerializeField] private GameObject _Gra2;
     [SerializeField] private PlayerController Player;
     [SerializeField] private AudioSource _audioSource;
     private int counter = 0;
@@ -38,6 +39,7 @@ public class TutorialScript : MonoBehaviour
         if (counter == 5)
         {
             _Gra.SetActive(true);
+            _Gra2.SetActive(true);
         }
         if (_inputs.A && Player._isGrounded)
         {
