@@ -6172,7 +6172,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823297552}
-  - component: {fileID: 1823297554}
   - component: {fileID: 1823297553}
   m_Layer: 0
   m_Name: ForeGround (1)
@@ -6218,19 +6217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shakePower: 0.15
---- !u!114 &1823297554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823297551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e77216190fccc4fa044602bb4c2ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shakers: []
 --- !u!114 &1900194840 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3085966217569530894, guid: 926b949631972074fbbe7b7f17f0309f, type: 3}
@@ -6471,7 +6457,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2019593765}
   - component: {fileID: 2019593764}
-  - component: {fileID: 2019593767}
   - component: {fileID: 2019593766}
   m_Layer: 0
   m_Name: Background (1)
@@ -6560,19 +6545,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shakePower: 0.05
---- !u!114 &2019593767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019593763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e77216190fccc4fa044602bb4c2ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shakers: []
 --- !u!4 &2019954123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 559874765144975271, guid: d1e4d3c55f51da841a3517aa7c05ee77, type: 3}
