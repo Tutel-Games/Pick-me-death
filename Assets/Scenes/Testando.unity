@@ -5400,7 +5400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c219504f1a96ae4d857ede5e96c8298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 10, y: -4.92}
+  Position: {x: 10, y: -2.47}
   MoveRight: 0
 --- !u!4 &293850215
 Transform:
@@ -6114,7 +6114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814548707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.77, z: 0}
+  m_LocalPosition: {x: 0, y: -1.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6751,7 +6751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c219504f1a96ae4d857ede5e96c8298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: -10, y: -4.92}
+  Position: {x: -10, y: -2.47}
   MoveRight: 1
 --- !u!4 &1029828190
 Transform:
@@ -7080,14 +7080,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 76917328584924540, guid: 926b949631972074fbbe7b7f17f0309f, type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581021268175467628, guid: 926b949631972074fbbe7b7f17f0309f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3122599329887419081, guid: 926b949631972074fbbe7b7f17f0309f, type: 3}
       propertyPath: _particlesSmash
       value: 
@@ -7334,7 +7326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c219504f1a96ae4d857ede5e96c8298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 10, y: -3.08}
+  Position: {x: 10, y: -0.63000005}
   MoveRight: 0
 --- !u!4 &1429990394
 Transform:
@@ -7698,7 +7690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c219504f1a96ae4d857ede5e96c8298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: -9.6, y: -3.08}
+  Position: {x: -9.6, y: -0.63000005}
   MoveRight: 1
 --- !u!4 &1694717443
 Transform:

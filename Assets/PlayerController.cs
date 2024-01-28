@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Random _random = new ();
     private bool _isGrounded;
     private bool _isSmashing;
+    private bool _canDouble;
     private Rigidbody2D _rb;
     public LayerMask GroundLayer;
 
@@ -46,11 +47,21 @@ public class PlayerController : MonoBehaviour
             _sr.flipX = false;
             SetActiveObj(_rightAttackSphere);
         }
-        if (_inputs.W && _isGrounded)
+        if (_inputs.W)
         {
-            _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
-            _anim.Play("Jump");
-            _particlesJump.Play();
+            if (_isGrounded)
+            {
+                _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
+                _anim.Play("Jump");
+                _particlesJump.Play();
+            }
+            else if (_canDouble)
+            {
+                _canDouble = false;
+                print("x");
+                _anim.Play("Kolowrotek");
+            }
+            
         }
         
         if (_inputs.S && !_isGrounded && !_isSmashing)
@@ -72,7 +83,7 @@ public class PlayerController : MonoBehaviour
             {
                 _anim.Play("Idle");
             }
-            else if(!_isSmashing)
+            else if(!_isSmashing && _canDouble)
             {
                 _anim.Play("Jump");
             }
@@ -82,6 +93,11 @@ public class PlayerController : MonoBehaviour
         {
             Invoke(nameof(ResetParticleSmash), .02f);
             Invoke(nameof(ResetSmash), .2f);
+        }
+
+        if (_isGrounded)
+        {
+            _canDouble = true;
         }
     }
 
