@@ -35,7 +35,7 @@ public class EnemiesSpawner : MonoBehaviour
     {
         if (currentStreak == 25)
         {
-            SpawnTimeInterval *= 0.95f;
+            SpawnTimeInterval *= 0.9f;
             foreach (var enemy in _enemyPrefab)
             {
                 enemy.SetMoveSpeed(enemy.MoveSpeed * 1.15f);
@@ -43,7 +43,7 @@ public class EnemiesSpawner : MonoBehaviour
         }
         else if (currentStreak == 50)
         {
-            SpawnTimeInterval *= 0.95f;
+            SpawnTimeInterval *= 0.8f;
             foreach (var enemy in _enemyPrefab)
             {
                 enemy.SetMoveSpeed(enemy.MoveSpeed * 1.125f);
@@ -51,7 +51,7 @@ public class EnemiesSpawner : MonoBehaviour
         }
         else if (currentStreak == 75)
         {
-            SpawnTimeInterval *= 0.95f;
+            SpawnTimeInterval *= 0.8f;
             foreach (var enemy in _enemyPrefab)
             {
                 enemy.SetMoveSpeed(enemy.MoveSpeed * 1.1f);
