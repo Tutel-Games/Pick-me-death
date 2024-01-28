@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _rightAttackSphere;
     [SerializeField] private GameObject _jumpAttackSphere;
     [SerializeField] private GameObject _smashAttackSphere;
+    [SerializeField] private GameObject _rageAttackSphere;
     [SerializeField] private InputReader _inputs;
     [SerializeField] private SpriteRenderer _sr;
     [SerializeField] private Animator _anim;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool _isGrounded;
     private bool _isSmashing;
     private bool _canDouble;
+    private bool _isRaged;
     private Rigidbody2D _rb;
     public LayerMask GroundLayer;
     [SerializeField] private RectTransform _hpSlider;
@@ -41,43 +43,45 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, GroundLayer);
-        
-        if (_inputs.A && _timer <=0)
+        if (!_isRaged)
         {
-            _sr.flipX = true;
-            SetActiveObj(_leftAttackSphere);
-        }
-        if (_inputs.D && _timer <=0)
-        {
-            _sr.flipX = false;
-            SetActiveObj(_rightAttackSphere);
-        }
-        if (_inputs.W)
-        {
-            if (_isGrounded)
+            if (_inputs.A && _timer <=0)
             {
-                _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
-                _anim.Play("Jump");
-                _particlesJump.Play();
+                _sr.flipX = true;
+                SetActiveObj(_leftAttackSphere);
             }
-            else if (_canDouble)
+            if (_inputs.D && _timer <=0)
             {
-                _canDouble = false;
-                _anim.Play("Kolowrotek");
-                _timer = 0.2f;
-                _currentActiveObj.SetActive(false);
-                _currentActiveObj = _jumpAttackSphere;
-                _currentActiveObj.SetActive(true);
+                _sr.flipX = false;
+                SetActiveObj(_rightAttackSphere);
             }
+            if (_inputs.W)
+            {
+                if (_isGrounded)
+                {
+                    _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
+                    _anim.Play("Jump");
+                    _particlesJump.Play();
+                }
+                else if (_canDouble)
+                {
+                    _canDouble = false;
+                    _anim.Play("Kolowrotek");
+                    _timer = 0.2f;
+                    _currentActiveObj.SetActive(false);
+                    _currentActiveObj = _jumpAttackSphere;
+                    _currentActiveObj.SetActive(true);
+                }
             
-        }
+            }
         
-        if (_inputs.S && !_isGrounded && !_isSmashing)
-        {
-            _rb.AddForce(Vector3.down * (_jumpForce * 1.25f), ForceMode2D.Impulse);
-            _rb.sharedMaterial = bounce;
-            _isSmashing = true;
-            _anim.Play("Smash");
+            if (_inputs.S && !_isGrounded && !_isSmashing)
+            {
+                _rb.AddForce(Vector3.down * (_jumpForce * 1.25f), ForceMode2D.Impulse);
+                _rb.sharedMaterial = bounce;
+                _isSmashing = true;
+                _anim.Play("Smash");
+            }
         }
 
         if (_timer > 0)
@@ -148,4 +152,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    [ContextMenu("XXXXX")]
+    public void Rage()
+    {
+        _isRaged = true;
+        _timer = 1f;
+        _anim.Play("Rage");
+        _currentActiveObj.SetActive(false);
+        _currentActiveObj = _rageAttackSphere;
+        _currentActiveObj.SetActive(true);
+        Invoke(nameof(ResetRage), 1);
+    }
+
+    public void ResetRage()
+    {
+        _isRaged = false;
+    }
 }
