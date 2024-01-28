@@ -36,72 +36,73 @@ public class TutorialScript : MonoBehaviour
     private void Update()
     {
         //Player._isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, GroundLayer);
-        if (counter == 5)
+        if (counter == 7)
         {
             _Gra.SetActive(true);
             _Gra2.SetActive(true);
+            gameObject.SetActive(false);
         }
-        if (_inputs.A && Player._isGrounded)
+        if (_inputs.A && Player._isGrounded && _gameObjectA.activeInHierarchy)
         {
             _audioSource.Play();
             _particleSystem[0].Play();
-            StartCoroutine(Pop(_gameObjectA));
+            Pop(_gameObjectA);
 
             counter++;
         }
-        if (_inputs.D && Player._isGrounded)
+        if (_inputs.D && Player._isGrounded && _gameObjectD.activeInHierarchy)
         {
             _audioSource.Play();
             _particleSystem[1].Play();
-            StartCoroutine(Pop(_gameObjectD));
+            Pop(_gameObjectD);
 
             counter++;
         }
-        if (_inputs.A && !Player._isGrounded)
+        if (_inputs.A && !Player._isGrounded && _gameObjectWA.activeInHierarchy)
         {
             _audioSource.Play();
             _particleSystem[3].Play();
-            StartCoroutine(Pop(_gameObjectWA));
+            Pop(_gameObjectWA);
 
             counter++;
         }
-        if (_inputs.D && !Player._isGrounded)
+        if (_inputs.D && !Player._isGrounded && _gameObjectWD.activeInHierarchy)
         {
             _audioSource.Play();
             _particleSystem[4].Play();
-            StartCoroutine(Pop(_gameObjectWD));
+            Pop(_gameObjectWD);
 
             counter++;
         }
-        if (_inputs.W && !Player._isGrounded)
+        if (_inputs.W && !Player._isGrounded && _gameObjectWW.activeInHierarchy)
         {
             _audioSource.Play();
             _particleSystem[2].Play();
-            StartCoroutine(Pop(_gameObjectWW));
+            Pop(_gameObjectWW);
             counter++;
         }
-        if (_inputs.W)
+        if (_inputs.W && _gameObjectWW.activeInHierarchy)
         {
             if (_canDouble)
             {
-                StartCoroutine(Pop(_gameObjectWW));
+                Pop(_gameObjectWW);
                 counter++;
             }
         }
 
-        if (_inputs.S && !Player._isGrounded && !_isSmashing)
+        if (_inputs.S && !Player._isGrounded && !_isSmashing && _gameObjectWS.activeInHierarchy)
         {
             _audioSource.Play();
             _particleSystem[5].Play();
             _particleSystem[6].Play();
-            StartCoroutine(Pop(_gameObjectWS));
-            StartCoroutine(Pop(_gameObjectWS2));
+            Pop(_gameObjectWS);
+            Pop(_gameObjectWS2);
+            counter++;
             counter++;
         }
     }
-    IEnumerator Pop(GameObject gameObject)
+    void Pop(GameObject gameObject)
     {
-        yield return new WaitForSeconds(0.2f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

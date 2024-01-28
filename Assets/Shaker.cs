@@ -19,7 +19,7 @@ public class Shaker : MonoBehaviour
         if (_isShakenado) return;
         mySequence = DOTween.Sequence();
         mySequence.Append(transform.DOShakePosition(1.5f, _shakePower * 1.5f, 10, 90.0f)).OnComplete( () => _isShakenado = false);
-        mySequence.SetAutoKill(false);
+
         mySequence.Pause();
         _isShakenado = true;
         smallShake.Pause();
@@ -31,7 +31,6 @@ public class Shaker : MonoBehaviour
     {
         avarageShake = DOTween.Sequence();
         avarageShake.Append(transform.DOShakePosition(.5f, _shakePower * .6f, 10, 90.0f));
-        avarageShake.SetAutoKill(false);
         avarageShake.Pause();
         avarageShake.Restart();
     }
@@ -40,7 +39,6 @@ public class Shaker : MonoBehaviour
     {
         smallShake = DOTween.Sequence();
         smallShake.Append(transform.DOShakePosition(.5f, _shakePower * .3f, 10, 90.0f));
-        smallShake.SetAutoKill(false);
         smallShake.Pause();
         smallShake.Restart();
     }
