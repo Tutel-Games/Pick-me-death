@@ -7,8 +7,7 @@ public class WordRandomizer : MonoBehaviour
     [SerializeField] private ParticleSystem[] _particleSystems;
     [SerializeField] private ParticleSystem[] _particleSystems2;
     private int _random;
-
-    [ContextMenu("playparticle")]
+    
     public void PlayParticle()
     {
         _random = Random.Range(0, 3);
