@@ -2550,6 +2550,7 @@ MonoBehaviour:
   _particlesRage: {fileID: 0}
   _audioRage: {fileID: 0}
   _audioSmash: {fileID: 0}
+  _audioImpact: {fileID: 0}
   _damage: {fileID: 0}
   _isGrounded: 0
   GroundLayer:
@@ -3968,6 +3969,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player copy 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8209539827036587949, guid: 926b949631972074fbbe7b7f17f0309f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 764f13ae6df24e74abc11c0d1bebc79c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
