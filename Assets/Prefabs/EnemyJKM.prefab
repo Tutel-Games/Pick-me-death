@@ -38219,9 +38219,10 @@ MonoBehaviour:
   MoveRight: 0
   _spriteRenderer: {fileID: 4099723632347224658}
   _animator: {fileID: 2020429382766971441}
-  _health: 3
-  _movementSpeed: 3
+  _health: 2
+  _movementSpeed: 2
   _isDead: 0
+  _attackDelay: 1.5
   _rageThreshold: 50
   _defaultPunchPower: 150
   _punchPower:

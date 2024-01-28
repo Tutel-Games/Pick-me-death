@@ -38222,6 +38222,7 @@ MonoBehaviour:
   _health: 3
   _movementSpeed: 3
   _isDead: 0
+  _attackDelay: 2
   _rageThreshold: 50
   _defaultPunchPower: 150
   _punchPower:
