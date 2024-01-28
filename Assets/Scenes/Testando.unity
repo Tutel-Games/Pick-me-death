@@ -2454,6 +2454,7 @@ MonoBehaviour:
   _jumpForce: 10
   _particlesJump: {fileID: 0}
   _particlesSmash: {fileID: 0}
+  _isGrounded: 0
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -4218,6 +4219,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1402154536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402154538}
+  - component: {fileID: 1402154537}
+  m_Layer: 0
+  m_Name: Shakeomat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1402154537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402154536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e77216190fccc4fa044602bb4c2ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakers:
+  - {fileID: 2019593766}
+  - {fileID: 1823297553}
+--- !u!4 &1402154538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402154536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4667546, y: -2.1812916, z: -0.0669573}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1415741418
 GameObject:
   m_ObjectHideFlags: 0
@@ -5812,6 +5860,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823297552}
+  - component: {fileID: 1823297554}
+  - component: {fileID: 1823297553}
   m_Layer: 0
   m_Name: ForeGround (1)
   m_TagString: Untagged
@@ -5843,6 +5893,32 @@ Transform:
   m_Father: {fileID: 627868822}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1823297553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823297551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa1b3d12edfa7c4ab58951597b6afb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakePower: 0.15
+--- !u!114 &1823297554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823297551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e77216190fccc4fa044602bb4c2ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakers: []
 --- !u!1 &1932409669
 GameObject:
   m_ObjectHideFlags: 0
@@ -6072,6 +6148,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2019593765}
   - component: {fileID: 2019593764}
+  - component: {fileID: 2019593767}
+  - component: {fileID: 2019593766}
   m_Layer: 0
   m_Name: Background (1)
   m_TagString: Untagged
@@ -6146,6 +6224,32 @@ Transform:
   m_Father: {fileID: 627868822}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2019593766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019593763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa1b3d12edfa7c4ab58951597b6afb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakePower: 0.05
+--- !u!114 &2019593767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019593763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e77216190fccc4fa044602bb4c2ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakers: []
 --- !u!1 &2047018410
 GameObject:
   m_ObjectHideFlags: 0
