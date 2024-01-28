@@ -4729,6 +4729,7 @@ GameObject:
   - component: {fileID: 5967930253493147171}
   - component: {fileID: 4099723632347224658}
   - component: {fileID: 2020429382766971441}
+  - component: {fileID: 1141260279410473246}
   m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
@@ -4824,6 +4825,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1141260279410473246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489395049611363751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a2a5896c41174448b0460ceb93dcf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageValue: 10
+  PlayerController: {fileID: 0}
 --- !u!1 &4057573293626054448
 GameObject:
   m_ObjectHideFlags: 0
@@ -19266,12 +19281,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveRight: 0
+  _enemyAttack: {fileID: 1141260279410473246}
   _spriteRenderer: {fileID: 4099723632347224658}
   _animator: {fileID: 2020429382766971441}
   _health: 2
   _movementSpeed: 2
   _isDead: 0
-  _attackDelay: 1.5
   _rageThreshold: 50
   _defaultPunchPower: 150
   _punchPower:
