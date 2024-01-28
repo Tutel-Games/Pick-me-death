@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private GameObject _currentActiveObj;
     private float _timer;
     private Random _random = new ();
-    private bool _isGrounded;
+    public bool _isGrounded;
     private bool _isSmashing;
     private bool _canDouble;
     private Rigidbody2D _rb;
