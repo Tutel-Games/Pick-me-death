@@ -4793,7 +4793,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bcd76e7e974fb364fa50d568a76d49d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff7bc700ecf24ed4ca1e88d86fa7df24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -19281,6 +19281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveRight: 0
+  IsShrek: 0
   _enemyAttack: {fileID: 1141260279410473246}
   _spriteRenderer: {fileID: 4099723632347224658}
   _animator: {fileID: 2020429382766971441}
