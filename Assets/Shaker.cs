@@ -12,36 +12,36 @@ public class Shaker : MonoBehaviour
     Sequence smallShake;
     Sequence avarageShake;
 
-    private void Start()
-    {
-        mySequence = DOTween.Sequence();
-        mySequence.Append(transform.DOShakePosition(.5f, _shakePower, 10, 90.0f));
-        mySequence.SetAutoKill(false);
-        mySequence.Pause();
-        
-        smallShake = DOTween.Sequence();
-        smallShake.Append(transform.DOShakePosition(.5f, _shakePower * .4f, 10, 90.0f));
-        smallShake.SetAutoKill(false);
-        smallShake.Pause();
-        
-        avarageShake = DOTween.Sequence();
-        avarageShake.Append(transform.DOShakePosition(.5f, _shakePower * .8f, 10, 90.0f));
-        avarageShake.SetAutoKill(false);
-        avarageShake.Pause();
-    }
-    
+    private bool _isShakenado;
+
     public void Shakenado()
     {
+        if (_isShakenado) return;
+        mySequence = DOTween.Sequence();
+        mySequence.Append(transform.DOShakePosition(1.5f, _shakePower * 1.5f, 10, 90.0f)).OnComplete( () => _isShakenado = false);
+        mySequence.SetAutoKill(false);
+        mySequence.Pause();
+        _isShakenado = true;
+        smallShake.Pause();
+        avarageShake.Pause();
         mySequence.Restart();
     }
     
     public void AverageShakenado()
     {
+        avarageShake = DOTween.Sequence();
+        avarageShake.Append(transform.DOShakePosition(.5f, _shakePower * .6f, 10, 90.0f));
+        avarageShake.SetAutoKill(false);
+        avarageShake.Pause();
         avarageShake.Restart();
     }
     
     public void SmallShakenado()
     {
+        smallShake = DOTween.Sequence();
+        smallShake.Append(transform.DOShakePosition(.5f, _shakePower * .3f, 10, 90.0f));
+        smallShake.SetAutoKill(false);
+        smallShake.Pause();
         smallShake.Restart();
     }
 }

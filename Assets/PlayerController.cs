@@ -164,6 +164,7 @@ public class PlayerController : MonoBehaviour
         _isRaged = true;
         _timer = 1f;
         _anim.Play("Rage");
+        // Shakeomat.Instance.ShakerShakerPartyMaker();
         _currentActiveObj.SetActive(false);
         _currentActiveObj = _rageAttackSphere;
         _currentActiveObj.SetActive(true);
