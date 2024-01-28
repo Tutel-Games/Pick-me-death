@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject _leftAttackSphere;
     [SerializeField] private GameObject _rightAttackSphere;
+    [SerializeField] private GameObject _jumpAttackSphere;
+    [SerializeField] private GameObject _smashAttackSphere;
     [SerializeField] private InputReader _inputs;
     [SerializeField] private SpriteRenderer _sr;
     [SerializeField] private Animator _anim;
@@ -58,8 +60,11 @@ public class PlayerController : MonoBehaviour
             else if (_canDouble)
             {
                 _canDouble = false;
-                print("x");
                 _anim.Play("Kolowrotek");
+                _timer = 0.2f;
+                _currentActiveObj.SetActive(false);
+                _currentActiveObj = _jumpAttackSphere;
+                _currentActiveObj.SetActive(true);
             }
             
         }
@@ -91,7 +96,11 @@ public class PlayerController : MonoBehaviour
 
         if (_isGrounded && _isSmashing)
         {
-            Invoke(nameof(ResetParticleSmash), .02f);
+            _particlesSmash.Play();
+            _timer = 0.2f;
+            _currentActiveObj.SetActive(false);
+            _currentActiveObj = _smashAttackSphere;
+            _currentActiveObj.SetActive(true);
             Invoke(nameof(ResetSmash), .2f);
         }
 
@@ -99,11 +108,6 @@ public class PlayerController : MonoBehaviour
         {
             _canDouble = true;
         }
-    }
-
-    private void ResetParticleSmash()
-    {
-        _particlesSmash.Play();
     }
     private void ResetSmash()
     {

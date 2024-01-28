@@ -70,10 +70,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void GetDamage()
+    public void GetDamage(float knockbackMultiplier = 1)
     {
         _health--;
-        StartCoroutine(PushBack());
+        StartCoroutine(PushBack(knockbackMultiplier));
         _animator.Play("Hit");
         ComboCounter.Instance.IncreaseStreak();
         if (MoveRight)
@@ -97,13 +97,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private IEnumerator PushBack()
+    private IEnumerator PushBack(float multiplier)
     {
         if (_hasReachedStopPosition) yield return null;
 
         _isKnockedBack = true;
         float pushForceX = MoveRight ? -1 : 1;
-        _rb.AddForce(new Vector2(pushForceX * 25, 0), ForceMode2D.Impulse);
+        _rb.AddForce(new Vector2(pushForceX * 25 * multiplier, 0), ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.5f);
         _isKnockedBack = false;
     }

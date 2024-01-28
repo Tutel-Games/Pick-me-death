@@ -33,8 +33,6 @@ public class MusicBlender : MonoBehaviour
 
     public void MusicBlenderPoints(int currentComboValue)
     {
-        Debug.Log(currentComboValue);
-
         if(currentComboValue == 50)
         {
             DOVirtual.Float(_maxVolume, 0, _blendLength, (value) => {
