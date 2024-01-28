@@ -33067,7 +33067,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 665637308598396545, guid: cdab1ef86694c0948bec7c7e788fe4fc, type: 3}
       propertyPath: _maxVolume
-      value: 0.08
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 924670619922290241, guid: cdab1ef86694c0948bec7c7e788fe4fc, type: 3}
       propertyPath: m_RootOrder
@@ -33115,12 +33115,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1582453344891545635, guid: cdab1ef86694c0948bec7c7e788fe4fc, type: 3}
       propertyPath: m_Volume
-      value: 0.08
+      value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 1582453344891545635, guid: cdab1ef86694c0948bec7c7e788fe4fc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3085e1b158894374f92ab19d13c92d70, type: 3}
     - target: {fileID: 6846144331989178828, guid: cdab1ef86694c0948bec7c7e788fe4fc, type: 3}
       propertyPath: m_Name
       value: MusicBlender
       objectReference: {fileID: 0}
+    - target: {fileID: 8940525780245882502, guid: cdab1ef86694c0948bec7c7e788fe4fc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3085e1b158894374f92ab19d13c92d70, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
