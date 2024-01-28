@@ -91,6 +91,7 @@ public class Enemy : MonoBehaviour
         {
             _isDead = true;
             GameManager.IncreasePoints(ComboCounter.Instance.ScoreMultiplier);
+            FindObjectOfType<GameManager>().IncreaseDeadEnemiesCounter(1);
             Death?.Invoke(this);
             _animator.Play("Death");
             EnableRagdoll();
