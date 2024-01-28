@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ParticleSystem _particlesJump;
     [SerializeField] private ParticleSystem _particlesSmash;
     [SerializeField] private ParticleSystem _particlesRage;
+    [SerializeField] private AudioSource _audioRage;
     private GameObject _currentActiveObj;
     private float _timer;
     private Random _random = new ();
@@ -166,6 +167,7 @@ public class PlayerController : MonoBehaviour
         _timer = 1f;
         _anim.Play("Rage");
         _particlesRage.Play();
+        _audioRage.Play();
         _currentActiveObj.SetActive(false);
         _currentActiveObj = _rageAttackSphere;
         _currentActiveObj.SetActive(true);
