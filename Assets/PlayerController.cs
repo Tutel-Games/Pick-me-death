@@ -157,6 +157,8 @@ public class PlayerController : MonoBehaviour
         Hp -= value;
         float magicNumber = 584.391f;
         _hpSlider.sizeDelta = new Vector2(magicNumber * (Hp/100f), _hpSlider.sizeDelta.y);
+        _anim.Play("GetDamage");
+        _timer = 0.2f;
         if (Hp <= 0)
         {
             _deathScreen.SetActive(true);
