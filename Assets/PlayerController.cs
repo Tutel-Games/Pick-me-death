@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ParticleSystem _particlesRage;
     [SerializeField] private AudioSource _audioRage;
     [SerializeField] private AudioSource _audioSmash;
+    [SerializeField] private DamageScreen _damage;
+    
     private GameObject _currentActiveObj;
     private float _timer;
     private Random _random = new ();
@@ -158,6 +160,7 @@ public class PlayerController : MonoBehaviour
         float magicNumber = 584.391f;
         _hpSlider.sizeDelta = new Vector2(magicNumber * (Hp/100f), _hpSlider.sizeDelta.y);
         _anim.Play("GetDamage");
+        _damage.GetDamage();
         _timer = 0.2f;
         if (Hp <= 0)
         {
