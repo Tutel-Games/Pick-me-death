@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
     
     public void GetDamage(int value)
     {
+        ComboCounter.Instance.ResetStreak();
         Hp -= value;
         float magicNumber = 584.391f;
         _hpSlider.sizeDelta = new Vector2(magicNumber * (Hp/100f), _hpSlider.sizeDelta.y);

@@ -10,10 +10,10 @@ public class ComboCounter : MonoBehaviour
     public float StreakLength;
     public int CurrentStreak = 0;
     public int ScoreMultiplier = 1;
-    public event Action StreakReset; 
+    public event Action StreakReset;
+    public event Action<int> StreakIncrease;
     public List<int> MultiplierThresholds = new();
     [SerializeField] private TMP_Text _comboText;
-    [SerializeField] private float _timer;
     [SerializeField] private MusicBlender _musicBlender;
     [SerializeField] private PlayerController _pc;
     
@@ -30,23 +30,8 @@ public class ComboCounter : MonoBehaviour
         } 
     }
 
-    private void Start()
-    {
-        _timer = StreakLength;
-    }
-
-    private void Update()
-    {
-        _timer -= Time.deltaTime;
-        if (_timer <= 0 && CurrentStreak > 0)
-        {
-            ResetStreak();
-        }
-    }
-
     public void IncreaseStreak()
     {
-        ResetCounter();
         CurrentStreak++;
         _musicBlender.MusicBlenderPoints(CurrentStreak);
         if (CurrentStreak is 25 or 50 or 75 or 100 or 125 or 150 or 175 or 200 or 225 or 250 or 275 or 300 or 325 or 350 or 375 or 400 or 425 or 450 or 475 or 500 or 525 or 550 or 575 or 600 or 625 or 650 or 675 or 700)
@@ -69,14 +54,10 @@ public class ComboCounter : MonoBehaviour
         if (!_comboText) return;
         
         _comboText.text = $"Combo x{CurrentStreak}";
+        StreakIncrease?.Invoke(CurrentStreak);
     }
 
-    private void ResetCounter()
-    {
-        _timer = StreakLength;
-    }
-
-    private void ResetStreak()
+    public void ResetStreak()
     {
         CurrentStreak = 0;
         _currentThresholdIndex = 0;

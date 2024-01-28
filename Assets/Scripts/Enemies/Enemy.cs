@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public event Action<Enemy> Death;
     public bool MoveRight;
     public bool IsShrek = false;
+    public float MoveSpeed => _movementSpeed;
     [SerializeField] private EnemyAttack _enemyAttack;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animator _animator;
@@ -101,6 +102,11 @@ public class Enemy : MonoBehaviour
             _animator.Play("Death");
             EnableRagdoll();
         }
+    }
+
+    public void SetMoveSpeed(float value)
+    {
+        _ms = value;
     }
 
     private IEnumerator PushBack(float multiplier)

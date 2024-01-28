@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219baec549e92df44990508ca7d32efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SpawnTimeInterval>k__BackingField: 3
+  <SpawnTimeInterval>k__BackingField: 4
   <ActiveEnemiesCount>k__BackingField: 0
   _enemyPrefab:
   - {fileID: 4280243255263173000, guid: afbedc1be4847004bad5c84625ea7acb, type: 3}
@@ -4026,7 +4026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219baec549e92df44990508ca7d32efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SpawnTimeInterval>k__BackingField: 2
+  <SpawnTimeInterval>k__BackingField: 3
   <ActiveEnemiesCount>k__BackingField: 0
   _enemyPrefab:
   - {fileID: 4280243255263173000, guid: 859ef711e07c1a54cb6576ab05b82929, type: 3}
@@ -5967,7 +5967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282fbcd27450d87418bb53707cc28e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockbackForce: 60
+  _knockbackForce: 30
 --- !u!1 &1770347538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7703969771762337749, guid: 437b9caef325df149b9b105d2a3e8bf4, type: 3}

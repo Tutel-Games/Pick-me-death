@@ -7,10 +7,62 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private SpawnPositionData[] _spawnPositions;
     private int _lastDrawnPositionIndex;
     private float _timer;
+    private float _spawnIntervalDefault;
 
+    private void OnEnable()
+    {
+        ComboCounter.Instance.StreakIncrease += On_StreakIncrease;
+        ComboCounter.Instance.StreakReset += On_StreakReset;
+    }
+
+
+    private void OnDisable()
+    {
+        ComboCounter.Instance.StreakIncrease -= On_StreakIncrease;
+        ComboCounter.Instance.StreakReset -= On_StreakReset;
+    }
+
+    private void On_StreakReset()
+    {
+        SpawnTimeInterval = _spawnIntervalDefault;
+        foreach (var enemy in _enemyPrefab)
+        {
+            enemy.SetMoveSpeed(enemy.MoveSpeed);
+        }
+    }
+    
+    private void On_StreakIncrease(int currentStreak)
+    {
+        if (currentStreak == 25)
+        {
+            SpawnTimeInterval *= 0.95f;
+            foreach (var enemy in _enemyPrefab)
+            {
+                enemy.SetMoveSpeed(enemy.MoveSpeed * 1.15f);
+            }
+        }
+        else if (currentStreak == 50)
+        {
+            SpawnTimeInterval *= 0.95f;
+            foreach (var enemy in _enemyPrefab)
+            {
+                enemy.SetMoveSpeed(enemy.MoveSpeed * 1.125f);
+            }
+        }
+        else if (currentStreak == 75)
+        {
+            SpawnTimeInterval *= 0.95f;
+            foreach (var enemy in _enemyPrefab)
+            {
+                enemy.SetMoveSpeed(enemy.MoveSpeed * 1.1f);
+            }
+        }
+    }
+    
     private void Start()
     {
         _timer = SpawnTimeInterval;
+        _spawnIntervalDefault = SpawnTimeInterval;
     }
 
     private void Update()
