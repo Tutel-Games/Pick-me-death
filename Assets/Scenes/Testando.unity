@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219baec549e92df44990508ca7d32efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SpawnTimeInterval>k__BackingField: 4
+  <SpawnTimeInterval>k__BackingField: 5
   <ActiveEnemiesCount>k__BackingField: 0
   _enemyPrefab:
   - {fileID: 4280243255263173000, guid: afbedc1be4847004bad5c84625ea7acb, type: 3}
@@ -4026,7 +4026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219baec549e92df44990508ca7d32efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SpawnTimeInterval>k__BackingField: 3
+  <SpawnTimeInterval>k__BackingField: 4
   <ActiveEnemiesCount>k__BackingField: 0
   _enemyPrefab:
   - {fileID: 4280243255263173000, guid: 859ef711e07c1a54cb6576ab05b82929, type: 3}
