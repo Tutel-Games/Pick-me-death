@@ -33,14 +33,14 @@ public class MusicBlender : MonoBehaviour
 
     public void MusicBlenderPoints(int currentComboValue)
     {
-        if(currentComboValue == 50)
+        if(currentComboValue == 20)
         {
             DOVirtual.Float(_maxVolume, 0, _blendLength, (value) => {
                 _firstSong.volume = value;
                 _secoundSong.volume = _maxVolume - value;
             });
         }
-        if (currentComboValue == 100)
+        if (currentComboValue == 40)
         {
             DOVirtual.Float(_maxVolume, 0, _blendLength, (value) => {
                 _secoundSong.volume = value;
