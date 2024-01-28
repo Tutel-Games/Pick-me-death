@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282fbcd27450d87418bb53707cc28e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockbackForce: 3
+  _knockbackForce: 12
 --- !u!1 &2252188968667953278
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +547,7 @@ Transform:
   - {fileID: 8920671751506381546}
   - {fileID: 468427924499537924}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1}
 --- !u!114 &3085966217569530894
 MonoBehaviour:
@@ -580,6 +580,7 @@ MonoBehaviour:
   _leftAttackSphere: {fileID: 2443938264807732353}
   _rightAttackSphere: {fileID: 2252188968667953278}
   _jumpAttackSphere: {fileID: 2176946953239207045}
+  _smashAttackSphere: {fileID: 0}
   _inputs: {fileID: 3085966217569530894}
   _sr: {fileID: 6871031301353511263}
   _anim: {fileID: 6153629479050332831}
@@ -589,6 +590,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
+  _hpSlider: {fileID: 0}
+  _deathScreen: {fileID: 0}
+  Hp: 100
 --- !u!70 &4965033679057361027
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

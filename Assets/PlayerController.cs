@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
     public LayerMask GroundLayer;
     [SerializeField] private RectTransform _hpSlider;
+    [SerializeField] private GameObject _deathScreen;
     
     public int Hp = 100;
     private PhysicsMaterial2D bounce, nobounce;
@@ -136,13 +137,14 @@ public class PlayerController : MonoBehaviour
     [ContextMenu("Test")]
     public void GetDamage()
     {
-        int damage = 10;
+        int damage = 100;
         Hp -= damage;
         float magicNumber = 584.391f;
         _hpSlider.sizeDelta = new Vector2(magicNumber * (Hp/100f), _hpSlider.sizeDelta.y);
         if (Hp <= 0)
         {
-            print("dead");
+            _deathScreen.SetActive(true);
+            Destroy(gameObject);
         }
     }
 
