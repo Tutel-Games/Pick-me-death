@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
     public void GetDamage(float knockbackMultiplier = 1)
     {
         _health--;
+        Shakeomat.Instance.SmallShakerShakerPartyMaker();
         StartCoroutine(PushBack(knockbackMultiplier));
         _animator.Play("Hit");
         ComboCounter.Instance.IncreaseStreak();

@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
             _currentActiveObj = _smashAttackSphere;
             _currentActiveObj.SetActive(true);
             Invoke(nameof(ResetSmash), .2f);
+            Shakeomat.Instance.AverageShakerShakerPartyMaker();
         }
 
         if (_isGrounded)
