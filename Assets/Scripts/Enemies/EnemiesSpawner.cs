@@ -3,7 +3,7 @@ public class EnemiesSpawner : MonoBehaviour
 {
     [field: SerializeField] public float SpawnTimeInterval { get; private set; }
     [field: SerializeField] public int ActiveEnemiesCount { get; private set; }
-    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private Enemy[] _enemyPrefab;
     [SerializeField] private SpawnPositionData[] _spawnPositions;
     private int _lastDrawnPositionIndex;
     private float _timer;
@@ -34,7 +34,7 @@ public class EnemiesSpawner : MonoBehaviour
         SpawnPositionData drawnPosition = _spawnPositions[drawnPosIndex];
         Vector2 drawnSpawnPos = drawnPosition.Position;
         _lastDrawnPositionIndex = drawnPosIndex;
-        Enemy newEnemy = Instantiate(_enemyPrefab, drawnSpawnPos, Quaternion.identity);
+        Enemy newEnemy = Instantiate(_enemyPrefab[Random.Range(0, _enemyPrefab.Length)], drawnSpawnPos, Quaternion.identity);
         ActiveEnemiesCount++;
         newEnemy.Death += On_Death;
         newEnemy.MoveRight = drawnPosition.MoveRight;
