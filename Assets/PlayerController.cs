@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject _leftAttackSphere;
     [SerializeField] private GameObject _rightAttackSphere;
+    [SerializeField] private GameObject _jumpAttackSphere;
+    [SerializeField] private GameObject _smashAttackSphere;
+    [SerializeField] private GameObject _rageAttackSphere;
     [SerializeField] private InputReader _inputs;
     [SerializeField] private SpriteRenderer _sr;
     [SerializeField] private Animator _anim;
@@ -20,9 +23,13 @@ public class PlayerController : MonoBehaviour
     public bool _isGrounded;
     private bool _isSmashing;
     private bool _canDouble;
+    private bool _isRaged;
     private Rigidbody2D _rb;
     public LayerMask GroundLayer;
-
+    [SerializeField] private RectTransform _hpSlider;
+    [SerializeField] private GameObject _deathScreen;
+    
+    public int Hp = 100;
     private PhysicsMaterial2D bounce, nobounce;
     private void Start()
     {
@@ -36,40 +43,45 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, GroundLayer);
-        
-        if (_inputs.A)
+        if (!_isRaged)
         {
-            _sr.flipX = true;
-            SetActiveObj(_leftAttackSphere);
-        }
-        if (_inputs.D)
-        {
-            _sr.flipX = false;
-            SetActiveObj(_rightAttackSphere);
-        }
-        if (_inputs.W)
-        {
-            if (_isGrounded)
+            if (_inputs.A && _timer <=0)
             {
-                _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
-                _anim.Play("Jump");
-                _particlesJump.Play();
+                _sr.flipX = true;
+                SetActiveObj(_leftAttackSphere);
             }
-            else if (_canDouble)
+            if (_inputs.D && _timer <=0)
             {
-                _canDouble = false;
-                print("x");
-                _anim.Play("Kolowrotek");
+                _sr.flipX = false;
+                SetActiveObj(_rightAttackSphere);
             }
+            if (_inputs.W)
+            {
+                if (_isGrounded)
+                {
+                    _rb.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
+                    _anim.Play("Jump");
+                    _particlesJump.Play();
+                }
+                else if (_canDouble)
+                {
+                    _canDouble = false;
+                    _anim.Play("Kolowrotek");
+                    _timer = 0.2f;
+                    _currentActiveObj.SetActive(false);
+                    _currentActiveObj = _jumpAttackSphere;
+                    _currentActiveObj.SetActive(true);
+                }
             
-        }
+            }
         
-        if (_inputs.S && !_isGrounded && !_isSmashing)
-        {
-            _rb.AddForce(Vector3.down * (_jumpForce * 1.25f), ForceMode2D.Impulse);
-            _rb.sharedMaterial = bounce;
-            _isSmashing = true;
-            _anim.Play("Smash");
+            if (_inputs.S && !_isGrounded && !_isSmashing)
+            {
+                _rb.AddForce(Vector3.down * (_jumpForce * 1.25f), ForceMode2D.Impulse);
+                _rb.sharedMaterial = bounce;
+                _isSmashing = true;
+                _anim.Play("Smash");
+            }
         }
 
         if (_timer > 0)
@@ -91,7 +103,11 @@ public class PlayerController : MonoBehaviour
 
         if (_isGrounded && _isSmashing)
         {
-            Invoke(nameof(ResetParticleSmash), .02f);
+            _particlesSmash.Play();
+            _timer = 0.2f;
+            _currentActiveObj.SetActive(false);
+            _currentActiveObj = _smashAttackSphere;
+            _currentActiveObj.SetActive(true);
             Invoke(nameof(ResetSmash), .2f);
         }
 
@@ -100,32 +116,62 @@ public class PlayerController : MonoBehaviour
             _canDouble = true;
         }
     }
-
-    private void ResetParticleSmash()
-    {
-        _particlesSmash.Play();
-    }
     private void ResetSmash()
     {
         _rb.sharedMaterial = nobounce;
         _isSmashing = false;
     }
+
+    private int animIndex;
     void SetActiveObj(GameObject newObj)
     {
         _timer = 0.2f;
         _currentActiveObj.SetActive(false);
         _currentActiveObj = newObj;
         _currentActiveObj.SetActive(true);
-        if (_random.Next(2) == 0)
+        if (animIndex == 0)
         {
             _anim.Play("Punch");
+            animIndex++;
+        }
+        else if (animIndex == 1)
+        {
+            _anim.Play("Kick");
+            animIndex++;
         }
         else
         {
-            _anim.Play("Kick");
+            _anim.Play("Push");
+            animIndex = 0;
+        }
+    }
+    
+    public void GetDamage()
+    {
+        int damage = 100;
+        Hp -= damage;
+        float magicNumber = 584.391f;
+        _hpSlider.sizeDelta = new Vector2(magicNumber * (Hp/100f), _hpSlider.sizeDelta.y);
+        if (Hp <= 0)
+        {
+            _deathScreen.SetActive(true);
+            Destroy(gameObject);
         }
     }
 
+    public void Rage()
+    {
+        _isRaged = true;
+        _timer = 1f;
+        _anim.Play("Rage");
+        _currentActiveObj.SetActive(false);
+        _currentActiveObj = _rageAttackSphere;
+        _currentActiveObj.SetActive(true);
+        Invoke(nameof(ResetRage), 1);
+    }
 
-
+    public void ResetRage()
+    {
+        _isRaged = false;
+    }
 }

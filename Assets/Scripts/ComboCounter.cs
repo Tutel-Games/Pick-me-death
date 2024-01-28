@@ -15,6 +15,8 @@ public class ComboCounter : MonoBehaviour
     [SerializeField] private TMP_Text _comboText;
     [SerializeField] private float _timer;
     [SerializeField] private MusicBlender _musicBlender;
+    [SerializeField] private PlayerController _pc;
+    
     private int _currentThresholdIndex;
     private void Awake()
     {
@@ -47,6 +49,10 @@ public class ComboCounter : MonoBehaviour
         ResetCounter();
         CurrentStreak++;
         _musicBlender.MusicBlenderPoints(CurrentStreak);
+        if (CurrentStreak is 25 or 50 or 75)
+        {
+            _pc.Rage();
+        }
         if (_currentThresholdIndex != MultiplierThresholds.Count && CurrentStreak >= MultiplierThresholds[_currentThresholdIndex])
         {
             ScoreMultiplier++;
@@ -62,7 +68,7 @@ public class ComboCounter : MonoBehaviour
         sequence.Play();
         if (!_comboText) return;
         
-        _comboText.text = $"COMBO {CurrentStreak} \n x{ScoreMultiplier}";
+        _comboText.text = $"Combo x{CurrentStreak}";
     }
 
     private void ResetCounter()
@@ -81,7 +87,8 @@ public class ComboCounter : MonoBehaviour
         sequence.Play();
         if (!_comboText) return;
         
-        _comboText.text = $"COMBO {CurrentStreak} \n x{ScoreMultiplier}";
+        _comboText.text = $"Combo x{CurrentStreak}";
         StreakReset?.Invoke();
     }
+
 }

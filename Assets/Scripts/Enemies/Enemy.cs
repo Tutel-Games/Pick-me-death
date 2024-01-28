@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _health = 2;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private bool _isDead;
+    [SerializeField] private float _attackDelay;
     [Header("AFTER DEATH RAGDOLL")] 
     [SerializeField] private int _rageThreshold;
     [SerializeField] private float _defaultPunchPower;
@@ -29,6 +30,8 @@ public class Enemy : MonoBehaviour
     private bool _isKnockedBack;
     private bool _hasReachedStopPosition;
     private Rigidbody2D _rb;
+    private float _timer;
+    private PlayerController _playerController;
     
     private void Awake()
     {
@@ -51,13 +54,31 @@ public class Enemy : MonoBehaviour
         _rb.MovePosition(move);
     }
 
+    private void Update()
+    {
+        if (!_hasReachedStopPosition) return;
+        if (_isKnockedBack) return;
+
+        _timer -= Time.deltaTime;
+        if (_timer <= 0)
+        {
+            _playerController.GetDamage();
+            _timer = _attackDelay;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("StopPosition"))
         {
             _hasReachedStopPosition = true;
             _ms = 0;
-            //TODO: ATTACK PLAYER
+            _timer = _attackDelay;
+            _animator.Play(MoveRight ? "AttackRight" : "Attack");
+            if (!_playerController)
+            {
+                _playerController = other.GetComponent<PlayerHolder>().PlayerController;
+            }
         }
     }
 
@@ -70,10 +91,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void GetDamage()
+    public void GetDamage(float knockbackMultiplier = 1)
     {
         _health--;
-        StartCoroutine(PushBack());
+        StartCoroutine(PushBack(knockbackMultiplier));
         _animator.Play("Hit");
         ComboCounter.Instance.IncreaseStreak();
         if (MoveRight)
@@ -91,19 +112,20 @@ public class Enemy : MonoBehaviour
         {
             _isDead = true;
             GameManager.IncreasePoints(ComboCounter.Instance.ScoreMultiplier);
+            FindObjectOfType<GameManager>().IncreaseDeadEnemiesCounter(1);
             Death?.Invoke(this);
             _animator.Play("Death");
             EnableRagdoll();
         }
     }
 
-    private IEnumerator PushBack()
+    private IEnumerator PushBack(float multiplier)
     {
         if (_hasReachedStopPosition) yield return null;
 
         _isKnockedBack = true;
         float pushForceX = MoveRight ? -1 : 1;
-        _rb.AddForce(new Vector2(pushForceX * 25, 0), ForceMode2D.Impulse);
+        _rb.AddForce(new Vector2(pushForceX * 25 * multiplier, 0), ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.5f);
         _isKnockedBack = false;
     }
