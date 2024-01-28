@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator _anim;
     [SerializeField] private float _jumpForce = 1f;
     [SerializeField] private ParticleSystem _particlesJump;
+    [SerializeField] private ParticleSystem _particlesSmash;
     private GameObject _currentActiveObj;
     private float _timer;
     private Random _random = new ();
@@ -79,10 +80,15 @@ public class PlayerController : MonoBehaviour
 
         if (_isGrounded && _isSmashing)
         {
+            Invoke(nameof(ResetParticleSmash), .02f);
             Invoke(nameof(ResetSmash), .2f);
         }
     }
 
+    private void ResetParticleSmash()
+    {
+        _particlesSmash.Play();
+    }
     private void ResetSmash()
     {
         _rb.sharedMaterial = nobounce;

@@ -26,9 +26,9 @@ public class MusicBlender : MonoBehaviour
     {
         DOVirtual.Float(_maxVolume, 0, _blendLength, (value) => {
             _firstSong.volume = _maxVolume - value;
-            _secoundSong.volume = value;
-            _thirdSong.volume = value;
         });
+        _secoundSong.volume = 0f;
+        _thirdSong.volume = 0f;
     }
 
     public void MusicBlenderPoints(int currentComboValue)
