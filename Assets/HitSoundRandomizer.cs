@@ -15,6 +15,6 @@ public class HitSoundRandomizer : MonoBehaviour
         _random = Random.Range(0, 6);
         _random2 = Random.Range(0, 4);
         _audioSource.PlayOneShot(_audioClap[_random2]);
-        _audioSource.PlayOneShot(_audioClips[_random]);
+        _audioSource.PlayOneShot(_audioClips[_random], 0.4f);
     }
 }

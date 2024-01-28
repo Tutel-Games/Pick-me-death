@@ -8,6 +8,9 @@ public class EnemyAttack : MonoBehaviour
     public PlayerController PlayerController;
     public void DealDamage()
     {
-        PlayerController.GetDamage(DamageValue);
+        if (Vector2.Distance(transform.position, PlayerController.transform.position) <= 2.5f)
+        {
+            PlayerController.GetDamage(DamageValue);
+        }
     }
 }
