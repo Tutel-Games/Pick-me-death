@@ -62,7 +62,7 @@ public class ComboCounter : MonoBehaviour
         sequence.Play();
         if (!_comboText) return;
         
-        _comboText.text = $"COMBO {CurrentStreak} \n x{ScoreMultiplier}";
+        _comboText.text = $"Combo x{CurrentStreak}";
     }
 
     private void ResetCounter()
@@ -81,7 +81,8 @@ public class ComboCounter : MonoBehaviour
         sequence.Play();
         if (!_comboText) return;
         
-        _comboText.text = $"COMBO {CurrentStreak} \n x{ScoreMultiplier}";
+        _comboText.text = $"Combo x{CurrentStreak}";
         StreakReset?.Invoke();
     }
+
 }
